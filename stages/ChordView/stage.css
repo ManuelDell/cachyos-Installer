@@ -1,0 +1,109 @@
+/*
+ * OpenLP ChordView – stage.css
+ * Vollbild-Liedtextanzeige mit Akkorden (wie Songbeamer).
+ * Anpassbare Variablen ganz oben.
+ */
+
+:root {
+  --lyric-size: 6.5vh;       /* Liedtext-Schriftgröße */
+  --chord-size: 3.8vh;       /* Akkord-Schriftgröße */
+  --lyric-color: #ffffff;    /* Liedtext-Farbe */
+  --chord-color: #FFD700;    /* Akkord-Farbe (gold/gelb) */
+  --bg-color: #000000;       /* Hintergrundfarbe */
+  --font-family: Arial, Helvetica, sans-serif;
+  --line-spacing: 0.3em;     /* Abstand zwischen Zeilen */
+  --verse-spacing: 0.9em;    /* Abstand zwischen Strophen */
+}
+
+/* ── Basis ─────────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  font-family: var(--font-family);
+}
+
+/* ── Haupt-Container (zentriert wie Main-Ansicht) ──────── */
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 3vw 4vw;
+}
+
+#currentslide {
+  text-align: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* ── Vers-Trenner ──────────────────────────────────────── */
+
+.verse-break {
+  display: block;
+  height: var(--verse-spacing);
+}
+
+/* ── Liedzeile: enthält word-units nebeneinander ───────── */
+
+.lyric-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: var(--line-spacing);
+}
+
+/* ── Eine Einheit: Akkord (oben) + Silbe (unten) ───────── */
+
+.word-unit {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Minimaler Abstand nach rechts damit Akkorde nicht kleben */
+  padding-right: 0.2em;
+}
+
+/* Akkord */
+.chord-text {
+  display: block;
+  font-size: var(--chord-size);
+  font-weight: bold;
+  color: var(--chord-color);
+  line-height: 1.3;
+  min-height: 1.3em;    /* Platz reservieren auch wenn kein Akkord */
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* Liedtext-Silbe */
+.lyric-text {
+  display: block;
+  font-size: var(--lyric-size);
+  font-weight: bold;
+  color: var(--lyric-color);
+  line-height: 1.25;
+  white-space: pre;
+}
+
+/* ── Nicht-Song-Inhalte (Bibel, Bilder etc.) ───────────── */
+
+.plain-line {
+  display: block;
+  font-size: var(--lyric-size);
+  font-weight: bold;
+  color: var(--lyric-color);
+  line-height: 1.4;
+  text-align: center;
+}
